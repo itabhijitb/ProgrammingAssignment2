@@ -6,17 +6,17 @@
 
 ## Function to creates a cachable matrix
 makeCacheMatrix  <- function(x = matrix()) {
-  m <- NULL
-  set <- function(y) {
-    x <<- y
-    m <<- NULL
-  }
-  get <- function() x
-  setinv <- function(mean) m <<- mean
-  getinv <- function() m
-  list(set = set, get = get,
-       setinv = setinv,
-       getinv = getinv)
+        m <- NULL
+        set <- function(y) {
+                x <<- y
+                m <<- NULL
+        }
+        get <- function() x
+        setinv <- function(mean) m <<- mean
+        getinv <- function() m
+        list(set = set, get = get,
+             setinv = setinv,
+             getinv = getinv)
 }
 
 ## Solves the cachable matrix
@@ -34,13 +34,13 @@ makeCacheMatrix  <- function(x = matrix()) {
 ##      [2,]    1 -0.5
 ##      > 
 cacheSolve  <- function(x, ...) {
-  m <- x$getinv()
-  if(!is.null(m)) {
-    message("getting cached data")
-    return(m)
-  }
-  data <- x$get()
-  m <- solve(data, , ...)
-  x$setinv(m)
-  m
+        m <- x$getinv()
+        if(!is.null(m)) {
+                message("getting cached data")
+                return(m)
+        }
+        data <- x$get()
+        m <- solve(data, , ...)
+        x$setinv(m)
+        m
 }
